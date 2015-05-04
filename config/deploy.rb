@@ -36,8 +36,17 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-set :passenger_restart_command, "touch #{deploy_to}/current/tmp/restart.txt"
-set :passenger_restart_options, ''
+# 部署後重開 Passenger 解法:
+# Solution 1 (Passenger >= 5 和 capistrano-passenger >= 0.0.5)
+# (用 passenger-config restart-app 重開)
+# 首先在 server 上用 root 執行 visudo 加上一行:
+# deploy ALL=NOPASSWD:/usr/local/bin/passenger-config
+set :passenger_restart_with_sudo, true
+
+# Solution 2 (Passenger < 5 和 capistrano-passenger < 0.0.5)
+# (用 touch tmp/restart.txt 重開)
+# set :passenger_restart_command, -> { "touch #{fetch(:deploy_to)}/current/tmp/restart.txt" }
+# set :passenger_restart_options, ''
 
 namespace :deploy do
 
