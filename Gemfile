@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "mysql2"
+gem "sidekiq"
 
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
@@ -52,6 +53,8 @@ gem 'capistrano-passenger', :group => :development
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem "letter_opener", :group => :development
 
 group :development, :test do
   gem 'faker'
