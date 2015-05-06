@@ -4,4 +4,7 @@ class Product < ActiveRecord::Base
   validates_numericality_of :in_stock_qty, :only_integer => true
   validates_numericality_of :price, :only_integer => true, :greater_than => 1
 
+  include RankedModel
+  ranks :row_order
+
 end

@@ -20,9 +20,14 @@
   <%= product.name %><br />
   $<%= product.price %>
   <%= button_to "Buy", cart_path(:product_id => product) %>
+
+  <%= link_to "Up", move_up_product_path(product), :method => :post %>
+
+  <%= link_to "Down", move_down_product_path(product), :method => :post %>
+
 </div>
 <% end %>
 
 <div style="clear: both"></div>
 
-<%= paginate @products %>
+<%#= paginate @products %>

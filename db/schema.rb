@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428144903) do
+ActiveRecord::Schema.define(version: 20150506030644) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(version: 20150428144903) do
     t.integer  "in_stock_qty", limit: 4,     default: 0, null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "row_order",    limit: 4
   end
+
+  add_index "products", ["row_order"], name: "index_products_on_row_order", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
