@@ -234,7 +234,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  fb_config = YAML.load(File.read("#{Rails.root}/config/facebook.yml"))[Rails.env]
+  fb_config = Rails.application.config_for("facebook")
 
   config.omniauth :facebook, fb_config["app_id"], fb_config["secret"]
 
