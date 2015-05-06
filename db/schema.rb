@@ -11,12 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506030644) do
+ActiveRecord::Schema.define(version: 20150506154206) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "exports", force: :cascade do |t|
+    t.integer  "user_id",                 limit: 4
+    t.string   "token",                   limit: 255, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "attachment_file_name",    limit: 255
+    t.string   "attachment_content_type", limit: 255
+    t.integer  "attachment_file_size",    limit: 4
+    t.datetime "attachment_updated_at"
+  end
+
+  add_index "exports", ["token"], name: "index_exports_on_token", unique: true, using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id", limit: 4,             null: false

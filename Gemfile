@@ -12,8 +12,9 @@ gem 'rails', '4.2.1'
 gem 'mysql2'
 
 gem 'ranked-model'
-
 gem 'jquery-ui-rails'
+
+gem 'paperclip'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

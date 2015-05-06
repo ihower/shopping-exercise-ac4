@@ -18,3 +18,5 @@ config/email.yml
 /log/*
 !/log/.keep
 /tmp
+
+/public/system/*
