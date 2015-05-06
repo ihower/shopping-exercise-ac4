@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :products do
     member do
+      post :reorder
       post :move_up
       post :move_down
     end

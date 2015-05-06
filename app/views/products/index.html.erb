@@ -11,23 +11,41 @@
 </p>
 <hr>
 
+<div id="sortable">
 <% @products.each do |product| %>
-<div class="product">
-  <%= link_to product_path(product) do %>
-    <%= image_tag(product.image_url, :width => 50) %><br />
+  <div class="product" data-reorder-url="<%= reorder_product_path(product) %>">
+    <%= link_to product_path(product) do %>
+      <%= image_tag(product.image_url, :width => 50) %><br />
+    <% end %>
+
+    <%= product.name %><br />
+    $<%= product.price %>
+    <%= button_to "Buy", cart_path(:product_id => product) %>
+
+    <%= link_to "Up", move_up_product_path(product), :method => :post %>
+
+    <%= link_to "Down", move_down_product_path(product), :method => :post %>
+
+  </div>
   <% end %>
-
-  <%= product.name %><br />
-  $<%= product.price %>
-  <%= button_to "Buy", cart_path(:product_id => product) %>
-
-  <%= link_to "Up", move_up_product_path(product), :method => :post %>
-
-  <%= link_to "Down", move_down_product_path(product), :method => :post %>
-
 </div>
-<% end %>
 
 <div style="clear: both"></div>
 
 <%#= paginate @products %>
+
+<script>
+  $( "#sortable" ).sortable( {
+    update: function(e, ui) {
+      var reorder_url = ui.item.data("reorder-url");
+      var position = ui.item.index()
+
+      $.ajax({
+          type: 'POST',
+          url: reorder_url,
+          dataType: 'json',
+          data: { position: position }
+      })
+    }
+  });
+</script>

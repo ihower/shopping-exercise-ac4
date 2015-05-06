@@ -8,6 +8,13 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def reorder
+    @product = Product.find(params[:id])
+    @product.update_attribute :row_order_position, params[:position]
+
+    render :nothing => true
+  end
+
   def move_up
     @product = Product.find(params[:id])
 
