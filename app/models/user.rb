@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   before_save :ensure_authentication_token
 
+  def admin?
+    true
+  end
+
   def self.get_facebook_user_data(access_token)
     conn = Faraday.new(:url => 'https://graph.facebook.com/me')
     response = conn.get "/me", { :access_token => access_token }

@@ -12,10 +12,10 @@ gem 'rails', '4.2.1'
 gem 'mysql2'
 
 gem 'ranked-model'
-
 gem 'jquery-ui-rails'
 
 gem 'whenever', :require => false
+gem 'paperclip'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -42,6 +42,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "mysql2"
+gem "sidekiq"
+
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
@@ -54,6 +57,8 @@ gem 'capistrano-passenger', :group => :development
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem "letter_opener", :group => :development
 
 group :development, :test do
   gem 'faker'
