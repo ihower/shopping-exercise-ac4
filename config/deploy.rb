@@ -48,6 +48,8 @@ set :passenger_restart_with_sudo, true
 # set :passenger_restart_command, -> { "touch #{fetch(:deploy_to)}/current/tmp/restart.txt" }
 # set :passenger_restart_options, ''
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 namespace :deploy do
 
   after :restart, :clear_cache do
