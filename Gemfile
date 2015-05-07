@@ -43,6 +43,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "mysql2"
 gem "sidekiq"
 
+gem 'sinatra', '>= 1.3.0', :require => nil
+
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 

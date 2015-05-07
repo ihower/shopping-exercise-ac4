@@ -1,7 +1,8 @@
 class ExportsController < ApplicationController
 
   def create
-    ProductExporterJob.perform_later( User.first )
+    ProductExporterJob.perform_later(current_user)
+
     redirect_to :back, :notice => "Plase wait! E-mail is coming!"
   end
 
