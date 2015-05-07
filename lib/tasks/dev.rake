@@ -1,5 +1,9 @@
 namespace :dev do
 
+  task :demo => :environment do
+    Rails.logger.info("TEST cron!!!!!")
+  end
+
   task :fake => :environment do
     Product.delete_all
 

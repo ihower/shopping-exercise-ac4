@@ -18,6 +18,8 @@ require 'capistrano/deploy'
 require 'capistrano/rails'
 require 'capistrano/passenger'
 
+require "whenever/capistrano"
+
 # require 'capistrano/rvm'
 # require 'capistrano/rbenv'
 # require 'capistrano/chruby'
